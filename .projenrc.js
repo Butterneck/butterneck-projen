@@ -5,7 +5,7 @@ const project = new cdk.JsiiProject({
   defaultReleaseBranch: 'main',
   name: 'butterneck-projen',
   repositoryUrl: 'https://github.com/butterneck/butterneck-projen.git',
-  packageName: '@butterneck/projen',
+  // packageName: '@butterneck/projen',
 
   // deps: [],                /* Runtime dependencies of this module. */
   peerDeps: ['projen'],
