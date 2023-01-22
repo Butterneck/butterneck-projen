@@ -1,7 +1,7 @@
 import { AwsCdkPythonApp, AwsCdkPythonAppOptions } from 'projen/lib/awscdk';
-import { CatalogInfo } from './helpers';
 import { BuildWorkflow } from 'projen/lib/build/build-workflow';
 import { JobStep } from 'projen/lib/github/workflows-model';
+import { CatalogInfo } from './helpers';
 
 export interface ButterneckAwsCdkPythonAppOptions extends AwsCdkPythonAppOptions {
 }
@@ -23,14 +23,14 @@ export class ButterneckAwsCdkPythonApp extends AwsCdkPythonApp {
   public readonly buildWorkflow: BuildWorkflow;
 
   constructor(options: ButterneckAwsCdkPythonAppOptions) {
-    options
+    options;
     super(options);
 
     new CatalogInfo(this, 'catalog-info.yaml');
 
     this.buildWorkflow = new BuildWorkflow(this, {
       buildTask: this.buildTask,
-      artifactsDirectory: "", // this.artifactsDirectory,
+      artifactsDirectory: '', // this.artifactsDirectory,
       // containerImage: options.workflowContainerImage,
       // gitIdentity: this.workflowGitIdentity,
       // mutableBuild: options.mutableBuild,
@@ -55,12 +55,12 @@ export class ButterneckAwsCdkPythonApp extends AwsCdkPythonApp {
    * @returns Job steps
    */
   public renderWorkflowSetup(
-    options: RenderWorkflowSetupOptions = {}
+    options: RenderWorkflowSetupOptions = {},
   ): JobStep[] {
     const install = new Array<JobStep>();
 
     // TODO: Translate to Python from Node
-    options
+    options;
     // // first run the workflow bootstrap steps
     // install.push(...this.workflowBootstrapSteps);
 
