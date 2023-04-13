@@ -1,4 +1,6 @@
 const { cdk } = require('projen');
+const { GithubCredentials } = require('projen/lib/github');
+const { AppPermission } = require('projen/lib/github/workflows-model');
 const project = new cdk.JsiiProject({
   author: 'Filippo Pinton',
   authorEmail: 'pinton.filippo@protonmail.com',
@@ -17,6 +19,16 @@ const project = new cdk.JsiiProject({
     module: 'butterneck_projen',
   },
 
-  renovatebot: true,
+  // githubOptions: {
+  //   projenCredentials: GithubCredentials.fromApp({
+  //     permissions: {
+  //       repositoryProject: AppPermission.WRITE,
+  //       packages: AppPermission.WRITE,
+  //       workflows: AppPermission.WRITE
+  //     }
+  //   })
+  // }
+
+  // renovatebot: true,
 });
 project.synth();
