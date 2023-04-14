@@ -732,8 +732,10 @@ const goAppOptions: GoAppOptions = { ... }
 | <code><a href="#butterneck-projen.GoAppOptions.property.stale">stale</a></code> | <code>boolean</code> | Auto-close of stale issues and pull request. |
 | <code><a href="#butterneck-projen.GoAppOptions.property.staleOptions">staleOptions</a></code> | <code>projen.github.StaleOptions</code> | Auto-close stale issues and pull requests. |
 | <code><a href="#butterneck-projen.GoAppOptions.property.vscode">vscode</a></code> | <code>boolean</code> | Enable VSCode integration. |
-| <code><a href="#butterneck-projen.GoAppOptions.property.infra">infra</a></code> | <code><a href="#butterneck-projen.ButterneckAwsCdkPythonAppOptions">ButterneckAwsCdkPythonAppOptions</a></code> | *No description.* |
-| <code><a href="#butterneck-projen.GoAppOptions.property.service">service</a></code> | <code><a href="#butterneck-projen.GoProjectOptions">GoProjectOptions</a></code> | *No description.* |
+| <code><a href="#butterneck-projen.GoAppOptions.property.buildWorkflow">buildWorkflow</a></code> | <code>boolean</code> | Define a GitHub workflow for building PRs. |
+| <code><a href="#butterneck-projen.GoAppOptions.property.infra">infra</a></code> | <code><a href="#butterneck-projen.ButterneckAwsCdkPythonAppOptions">ButterneckAwsCdkPythonAppOptions</a></code> | TODO. |
+| <code><a href="#butterneck-projen.GoAppOptions.property.mutableBuild">mutableBuild</a></code> | <code>boolean</code> | Automatically update files modified during builds to pull-request branches. |
+| <code><a href="#butterneck-projen.GoAppOptions.property.service">service</a></code> | <code><a href="#butterneck-projen.GoProjectOptions">GoProjectOptions</a></code> | TODO. |
 
 ---
 
@@ -1151,7 +1153,20 @@ Enabled by default for root projects. Disabled for non-root projects.
 
 ---
 
-##### `infra`<sup>Required</sup> <a name="infra" id="butterneck-projen.GoAppOptions.property.infra"></a>
+##### `buildWorkflow`<sup>Optional</sup> <a name="buildWorkflow" id="butterneck-projen.GoAppOptions.property.buildWorkflow"></a>
+
+```typescript
+public readonly buildWorkflow: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true if not a subproject
+
+Define a GitHub workflow for building PRs.
+
+---
+
+##### `infra`<sup>Optional</sup> <a name="infra" id="butterneck-projen.GoAppOptions.property.infra"></a>
 
 ```typescript
 public readonly infra: ButterneckAwsCdkPythonAppOptions;
@@ -1159,15 +1174,38 @@ public readonly infra: ButterneckAwsCdkPythonAppOptions;
 
 - *Type:* <a href="#butterneck-projen.ButterneckAwsCdkPythonAppOptions">ButterneckAwsCdkPythonAppOptions</a>
 
+TODO.
+
 ---
 
-##### `service`<sup>Required</sup> <a name="service" id="butterneck-projen.GoAppOptions.property.service"></a>
+##### `mutableBuild`<sup>Optional</sup> <a name="mutableBuild" id="butterneck-projen.GoAppOptions.property.mutableBuild"></a>
+
+```typescript
+public readonly mutableBuild: boolean;
+```
+
+- *Type:* boolean
+- *Default:* true
+
+Automatically update files modified during builds to pull-request branches.
+
+This means
+that any files synthesized by projen or e.g. test snapshots will always be up-to-date
+before a PR is merged.
+
+Implies that PR builds do not have anti-tamper checks.
+
+---
+
+##### `service`<sup>Optional</sup> <a name="service" id="butterneck-projen.GoAppOptions.property.service"></a>
 
 ```typescript
 public readonly service: GoProjectOptions;
 ```
 
 - *Type:* <a href="#butterneck-projen.GoProjectOptions">GoProjectOptions</a>
+
+TODO.
 
 ---
 
@@ -2602,8 +2640,9 @@ resolved from the root of _this_ project.
 | <code><a href="#butterneck-projen.GoApp.property.github">github</a></code> | <code>projen.github.GitHub</code> | Access all github components. |
 | <code><a href="#butterneck-projen.GoApp.property.gitpod">gitpod</a></code> | <code>projen.Gitpod</code> | Access for Gitpod. |
 | <code><a href="#butterneck-projen.GoApp.property.vscode">vscode</a></code> | <code>projen.vscode.VsCode</code> | Access all VSCode components. |
-| <code><a href="#butterneck-projen.GoApp.property.infra">infra</a></code> | <code><a href="#butterneck-projen.ButterneckAwsCdkPythonApp">ButterneckAwsCdkPythonApp</a></code> | *No description.* |
-| <code><a href="#butterneck-projen.GoApp.property.service">service</a></code> | <code><a href="#butterneck-projen.GoProject">GoProject</a></code> | *No description.* |
+| <code><a href="#butterneck-projen.GoApp.property.buildWorkflow">buildWorkflow</a></code> | <code>projen.build.BuildWorkflow</code> | The PR build GitHub workflow. |
+| <code><a href="#butterneck-projen.GoApp.property.infra">infra</a></code> | <code><a href="#butterneck-projen.ButterneckAwsCdkPythonApp">ButterneckAwsCdkPythonApp</a></code> | TODO. |
+| <code><a href="#butterneck-projen.GoApp.property.service">service</a></code> | <code><a href="#butterneck-projen.GoProject">GoProject</a></code> | TODO. |
 
 ---
 
@@ -2958,6 +2997,20 @@ This will be `undefined` for subprojects.
 
 ---
 
+##### `buildWorkflow`<sup>Optional</sup> <a name="buildWorkflow" id="butterneck-projen.GoApp.property.buildWorkflow"></a>
+
+```typescript
+public readonly buildWorkflow: BuildWorkflow;
+```
+
+- *Type:* projen.build.BuildWorkflow
+
+The PR build GitHub workflow.
+
+`undefined` if `buildWorkflow` is disabled.
+
+---
+
 ##### `infra`<sup>Required</sup> <a name="infra" id="butterneck-projen.GoApp.property.infra"></a>
 
 ```typescript
@@ -2965,6 +3018,8 @@ public readonly infra: ButterneckAwsCdkPythonApp;
 ```
 
 - *Type:* <a href="#butterneck-projen.ButterneckAwsCdkPythonApp">ButterneckAwsCdkPythonApp</a>
+
+TODO.
 
 ---
 
@@ -2975,6 +3030,8 @@ public readonly service: GoProject;
 ```
 
 - *Type:* <a href="#butterneck-projen.GoProject">GoProject</a>
+
+TODO.
 
 ---
 
