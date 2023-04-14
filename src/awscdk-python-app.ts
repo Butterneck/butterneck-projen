@@ -2,8 +2,17 @@ import { Component, SampleDir, SampleFile } from 'projen';
 import { AwsCdkPythonApp, CdkConfigCommonOptions } from 'projen/lib/awscdk';
 import { GitHubProjectOptions } from 'projen/lib/github';
 
+
 // Jsii does not support Omit<> (https://github.com/aws/jsii/issues/2901)
 // export interface ButterneckAwsCdkPythonAppOptions extends Omit<AwsCdkPythonAppOptions, 'moduleName'|'authorName'|'authorEmail'|'version'|'sample'|'cdkVersion'> {
+/**
+ * TODO
+ *
+ * @export
+ * @interface ButterneckAwsCdkPythonAppOptions
+ * @extends {GitHubProjectOptions}
+ * @extends {CdkConfigCommonOptions}
+ */
 export interface ButterneckAwsCdkPythonAppOptions extends GitHubProjectOptions, CdkConfigCommonOptions {
   /**
      * Name of the python package as used in imports and filenames.
@@ -68,6 +77,14 @@ export interface ButterneckAwsCdkPythonAppOptions extends GitHubProjectOptions, 
   readonly devDeps?: string[];
 }
 
+/**
+ *
+ *
+ * @export
+ * @class ButterneckAwsCdkPythonApp
+ * @extends {AwsCdkPythonApp}
+ * @pjid awscdk-app-py
+ */
 export class ButterneckAwsCdkPythonApp extends AwsCdkPythonApp {
 
   constructor(options: ButterneckAwsCdkPythonAppOptions) {
@@ -99,6 +116,12 @@ export class ButterneckAwsCdkPythonApp extends AwsCdkPythonApp {
   }
 }
 
+/**
+ * TODO
+ *
+ * @class ButterneckAppCode
+ * @extends {Component}
+ */
 class ButterneckAppCode extends Component {
   constructor(project: AwsCdkPythonApp, fileName: string) {
     super(project);
@@ -120,6 +143,12 @@ class ButterneckAppCode extends Component {
   }
 }
 
+/**
+ * TODO
+ *
+ * @class ButterneckStackCode
+ * @extends {Component}
+ */
 class ButterneckStackCode extends Component {
   constructor(project: AwsCdkPythonApp) {
     super(project);

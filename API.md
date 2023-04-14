@@ -5,6 +5,8 @@
 
 ### ButterneckAwsCdkPythonAppOptions <a name="ButterneckAwsCdkPythonAppOptions" id="butterneck-projen.ButterneckAwsCdkPythonAppOptions"></a>
 
+TODO.
+
 #### Initializer <a name="Initializer" id="butterneck-projen.ButterneckAwsCdkPythonAppOptions.Initializer"></a>
 
 ```typescript
@@ -1148,6 +1150,8 @@ Enabled by default for root projects. Disabled for non-root projects.
 ---
 
 ### GoProjectOptions <a name="GoProjectOptions" id="butterneck-projen.GoProjectOptions"></a>
+
+TODO.
 
 #### Initializer <a name="Initializer" id="butterneck-projen.GoProjectOptions.Initializer"></a>
 
@@ -2976,6 +2980,8 @@ this task should synthesize the project files.
 ---
 
 ### GoProject <a name="GoProject" id="butterneck-projen.GoProject"></a>
+
+TODO.
 
 #### Initializers <a name="Initializers" id="butterneck-projen.GoProject.Initializer"></a>
 
