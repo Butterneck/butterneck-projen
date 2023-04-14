@@ -58,7 +58,7 @@ class GoMainCode extends Component {
   constructor(project: GoProject) {
     super(project);
 
-    new SampleFile(project, '', {
+    new SampleFile(project, 'main.go', {
       contents: [
         'package main',
         '',
