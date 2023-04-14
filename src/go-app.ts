@@ -1,12 +1,14 @@
 import { GitHubProject, GitHubProjectOptions } from 'projen/lib/github';
 import { Projenrc } from 'projen/lib/javascript';
-import { ButterneckAwsCdkPythonApp } from './awscdk-python-app';
-import { GoProject } from './go-project';
+import { ButterneckAwsCdkPythonApp, ButterneckAwsCdkPythonAppOptions } from './awscdk-python-app';
+import { GoProject, GoProjectOptions } from './go-project';
 
 
 // TODO: How to call class? Combination of language used for the service and language used for infra
 
 export interface GoAppOptions extends GitHubProjectOptions {
+  readonly infra: ButterneckAwsCdkPythonAppOptions;
+  readonly service: GoProjectOptions;
 }
 
 /**
@@ -19,24 +21,26 @@ export interface GoAppOptions extends GitHubProjectOptions {
  */
 export class GoApp extends GitHubProject {
 
-  public infraProject: ButterneckAwsCdkPythonApp;
-  public serviceProject: GoProject;
+  public infra: ButterneckAwsCdkPythonApp;
+  public service: GoProject;
 
   constructor(options: GoAppOptions) {
     super(options);
 
     new Projenrc(this);
 
-    this.infraProject = new ButterneckAwsCdkPythonApp({
-      name: options.name,
+    this.infra = new ButterneckAwsCdkPythonApp({
+      ...options.infra,
+      name: options.infra.name ?? options.name,
       parent: this,
-      outdir: 'infra',
+      outdir: options.infra.outdir ?? 'infra',
     });
 
-    this.serviceProject = new GoProject({
-      name: options.name,
+    this.service = new GoProject({
+      ...options.service,
+      name: options.service.name ?? options.name,
       parent: this,
-      outdir: 'src',
+      outdir: options.service.outdir ?? 'src',
     });
   }
 

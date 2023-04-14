@@ -732,6 +732,8 @@ const goAppOptions: GoAppOptions = { ... }
 | <code><a href="#butterneck-projen.GoAppOptions.property.stale">stale</a></code> | <code>boolean</code> | Auto-close of stale issues and pull request. |
 | <code><a href="#butterneck-projen.GoAppOptions.property.staleOptions">staleOptions</a></code> | <code>projen.github.StaleOptions</code> | Auto-close stale issues and pull requests. |
 | <code><a href="#butterneck-projen.GoAppOptions.property.vscode">vscode</a></code> | <code>boolean</code> | Enable VSCode integration. |
+| <code><a href="#butterneck-projen.GoAppOptions.property.infra">infra</a></code> | <code><a href="#butterneck-projen.ButterneckAwsCdkPythonAppOptions">ButterneckAwsCdkPythonAppOptions</a></code> | *No description.* |
+| <code><a href="#butterneck-projen.GoAppOptions.property.service">service</a></code> | <code><a href="#butterneck-projen.GoProjectOptions">GoProjectOptions</a></code> | *No description.* |
 
 ---
 
@@ -1146,6 +1148,26 @@ public readonly vscode: boolean;
 Enable VSCode integration.
 
 Enabled by default for root projects. Disabled for non-root projects.
+
+---
+
+##### `infra`<sup>Required</sup> <a name="infra" id="butterneck-projen.GoAppOptions.property.infra"></a>
+
+```typescript
+public readonly infra: ButterneckAwsCdkPythonAppOptions;
+```
+
+- *Type:* <a href="#butterneck-projen.ButterneckAwsCdkPythonAppOptions">ButterneckAwsCdkPythonAppOptions</a>
+
+---
+
+##### `service`<sup>Required</sup> <a name="service" id="butterneck-projen.GoAppOptions.property.service"></a>
+
+```typescript
+public readonly service: GoProjectOptions;
+```
+
+- *Type:* <a href="#butterneck-projen.GoProjectOptions">GoProjectOptions</a>
 
 ---
 
@@ -2580,8 +2602,8 @@ resolved from the root of _this_ project.
 | <code><a href="#butterneck-projen.GoApp.property.github">github</a></code> | <code>projen.github.GitHub</code> | Access all github components. |
 | <code><a href="#butterneck-projen.GoApp.property.gitpod">gitpod</a></code> | <code>projen.Gitpod</code> | Access for Gitpod. |
 | <code><a href="#butterneck-projen.GoApp.property.vscode">vscode</a></code> | <code>projen.vscode.VsCode</code> | Access all VSCode components. |
-| <code><a href="#butterneck-projen.GoApp.property.infraProject">infraProject</a></code> | <code><a href="#butterneck-projen.ButterneckAwsCdkPythonApp">ButterneckAwsCdkPythonApp</a></code> | *No description.* |
-| <code><a href="#butterneck-projen.GoApp.property.serviceProject">serviceProject</a></code> | <code><a href="#butterneck-projen.GoProject">GoProject</a></code> | *No description.* |
+| <code><a href="#butterneck-projen.GoApp.property.infra">infra</a></code> | <code><a href="#butterneck-projen.ButterneckAwsCdkPythonApp">ButterneckAwsCdkPythonApp</a></code> | *No description.* |
+| <code><a href="#butterneck-projen.GoApp.property.service">service</a></code> | <code><a href="#butterneck-projen.GoProject">GoProject</a></code> | *No description.* |
 
 ---
 
@@ -2936,20 +2958,20 @@ This will be `undefined` for subprojects.
 
 ---
 
-##### `infraProject`<sup>Required</sup> <a name="infraProject" id="butterneck-projen.GoApp.property.infraProject"></a>
+##### `infra`<sup>Required</sup> <a name="infra" id="butterneck-projen.GoApp.property.infra"></a>
 
 ```typescript
-public readonly infraProject: ButterneckAwsCdkPythonApp;
+public readonly infra: ButterneckAwsCdkPythonApp;
 ```
 
 - *Type:* <a href="#butterneck-projen.ButterneckAwsCdkPythonApp">ButterneckAwsCdkPythonApp</a>
 
 ---
 
-##### `serviceProject`<sup>Required</sup> <a name="serviceProject" id="butterneck-projen.GoApp.property.serviceProject"></a>
+##### `service`<sup>Required</sup> <a name="service" id="butterneck-projen.GoApp.property.service"></a>
 
 ```typescript
-public readonly serviceProject: GoProject;
+public readonly service: GoProject;
 ```
 
 - *Type:* <a href="#butterneck-projen.GoProject">GoProject</a>
